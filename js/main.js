@@ -11,8 +11,8 @@ randomInteger();
 //Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
 function getRandomCoordinates(minCoord, maxCoord, digitsAfter) {
   if (minCoord >=0 && minCoord < maxCoord) {
-    const randCoordinates = minCoord + Math.random() * (maxCoord + 1 - minCoord);
-    return randCoordinates.toFixed(digitsAfter);
+    const randCoordinates = minCoord + Math.random() * (maxCoord - minCoord);
+    return Number(randCoordinates.toFixed(digitsAfter));
   }
   return false;
 }
