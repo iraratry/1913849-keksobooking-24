@@ -77,24 +77,25 @@ const createOffer = () => {
 
   return {
     title: TITLE[randomTitleIndex],
-    address: createLocation,
+    // Понимаю, что так наверное не правильно перевести обьект в строку, но не придумала ничего лучшего. подскажи в комментарии, как лучше
+    address: createLocation() + '',
     price: randomInteger(),
     type: TYPE[randomTypeIndex],
     rooms: randomInteger(),
     quests: randomInteger(),
     checkin: CHECKINOUT[randomCheckInIndex],
     checkout: CHECKINOUT[randomCheckOutIndex],
-    features: Array.from({length: randomInteger(1, FEATURES.length)}, FEATURES[randomFeaturesIndex]),
+    features: Array.from({length: randomInteger(1, FEATURES.length)}, FEATURES[0, randomInteger(1, FEATURES.length - 1)]),
     desctiption: DESCRIPTION[randomDescriptionIndex],
-    photos: Array.from({length: randomInteger(1, PHOTOS.length)}, PHOTOS[randomPhotosIndex]),
+    photos: Array.from({length: randomInteger(1, PHOTOS.length)}, PHOTOS[0, randomInteger(1, PHOTOS.length - 1)]),
   };
 };
 
 const createAnnouncement = () => {
   return {
-    author: createAuthor,
-    offer: createOffer,
-    location: createLocation,
+    author: createAuthor(),
+    offer: createOffer(),
+    location: createLocation(),
   };
 };
 
